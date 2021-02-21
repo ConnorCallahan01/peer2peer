@@ -8,7 +8,7 @@ body{
     background-image: url("lab.jpg");
     background-repeat: no-repeat;
     background-position: top center;
-    background-size: 1100px 630px;
+
     font: 90% didot, serif;
 }
 header{
@@ -20,22 +20,41 @@ header{
 li{
     margin-left: 30px;
 }
-b {
-  display: inline-block;
-    background-color: indigo;
-    color: white;
-    padding: 0.5rem;
-    font-family: sans-serif;
-    border-radius: 0.3rem;
-    cursor: pointer;
-    margin-top: 1rem;
-}
 
 a{
   color: black;
   font-family: serif;
   font-size: 175%;
 }
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: #2596be;
+  border: none;
+  color: white;
+  padding: 10px 22px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+b {
+  background-color: gray;
+  color: white;
+  padding: 0.4% 0.9%;
+  position: absolute;
+  top:10px;
+  left:10px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+b:hover {
+  background-color: darkgray;
+}
+
+b:active {
+  box-shadow: none;
+  top: 5px;
+}
+
 footer{
     text-align: center;
 }
@@ -84,7 +103,9 @@ img.center{
     text-align: center;
     padding: 3px;
     border: 5px solid lightgray;
-    margin: 30px;
+    margin: 140px;
+    background-color: white;
+    opacity: 0.9;
 }
 #Resume p,
 #responsive p {
