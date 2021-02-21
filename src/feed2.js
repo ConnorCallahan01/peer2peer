@@ -36,7 +36,8 @@ $(document).ready(function () {
         console.log(snapshot.val());
         var key = snapshot.key;
         var newEntry = '<div class="row1"><div class="specialist-name">' +
-        sv.Name + '<div class="row1"><div class="specialist-topic">' +
+        sv.Name +
+        + '<div class="row1"><div class="specialist-topic">' +
         sv.Topic + '</div><img src="delete-icon.png" class="delete-icon" id="' +
         key + '"></div><div class="row2"><div class="message-text">' +
         sv.Message + '</div></div><div class="row3"><div class="date">' +
@@ -67,23 +68,12 @@ $(document).ready(function () {
         var today = month + " " + dd + ", " + yyyy;
 
         var user = firebase.auth().currentUser;
-var name, email, photoUrl, uid, emailVerified;
 
-if (user != null) {
-name = user.displayName;
-email = user.email;
-photoUrl = user.photoURL;
-emailVerified = user.emailVerified;
-uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
-                 // this value to authenticate with your backend server, if
-                 // you have one. Use User.getToken() instead.
-}
         database.ref().push({
             Name: nameEntry,
             Date: today,
             Message: messageEntry,
             Topic: topicEntry,
-            userId: uid,
         });
 
         $("#name").val("");
