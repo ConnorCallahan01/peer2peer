@@ -90,7 +90,6 @@ function signUp(){
     }else if(checkUserPasswordValid == null){
         return checkUserPassword();
     }else{
-      console.log()
         firebase.auth().createUserWithEmailAndPassword(userEmail, userPassword).then((success) => {
             var user = firebase.auth().currentUser;
             var uid;
