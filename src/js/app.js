@@ -140,6 +140,7 @@ function signUp(){
                 uid = user.uid;
             }
             var firebaseRef = firebase.database().ref();
+
             var userData = {
                 userFullName: userFullName,
                 userSurname: userSurname,
@@ -153,6 +154,7 @@ function signUp(){
                 userGp: "https://plus.google.com/",
                 userBio: "User biography",
             }
+
             firebaseRef.child(uid).set(userData);
             swal('Your Account Created','Your account was created successfully, you can log in now.',
             ).then((value) => {
@@ -326,7 +328,7 @@ function saveProfile(){
             userSurname: userSurname,
             userFieldOfStudy: userFieldOfStudy,
             userYearsOfRe: userYearsOfRe,
-            userAffiliation: userAffiliation, 
+            userAffiliation: userAffiliation,
             userFb: userFacebook,
             userTw: userTwitter,
             userGp: userGooglePlus,
