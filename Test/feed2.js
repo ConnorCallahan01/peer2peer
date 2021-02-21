@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     // Initialize Firebase
-
+/*
      var config = {
         apiKey: "AIzaSyAd7fKr96e5ZEdVn5181Czw-FElJRXUouc",
         authDomain: "fraud-team-news-feed.firebaseapp.com",
@@ -11,8 +11,8 @@ $(document).ready(function () {
         messagingSenderId: "393350782314"
     };
     firebase.initializeApp(config);
+*/
 
-/*
     var firebaseConfig = {
       apiKey: "AIzaSyA_YQT_5NeIamIsf9pO9caKYX2n9ROve70",
       authDomain: "peer2p-d953f.firebaseapp.com",
@@ -25,8 +25,8 @@ $(document).ready(function () {
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-*/
+    
+
 
 
     var database = firebase.database();

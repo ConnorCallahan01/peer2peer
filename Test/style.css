@@ -37,12 +37,15 @@
 }
 .specialist-name {
 	font-weight: bold;
+	font-size: 20px;
 }
 .specialist-topic {
 	font-weight: bold;
+	font-size: 15px;
 }
 .message-text {
-	font-weight: bold;
+	font-weight: normal;
+	font-size: 15px;
 }
 
 
