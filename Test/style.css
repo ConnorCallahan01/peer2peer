@@ -73,7 +73,11 @@
 	border: 1px solid black;
 	border-radius: 5px;
 }
-
+.menu{
+	width:auto;
+	height: 10%;
+	background-color: blue;
+}
 .name,
 .message,.topic {
 	border: 1px solid black;
