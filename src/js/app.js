@@ -30,7 +30,7 @@ function checkUserSurname(){
 function checkUserFiedl(){
     var userFieldOfStudy = document.getElementById("userFieldOfStudy").value;
     var flag = false;
-    if(userSurname === ""){
+    if(userFieldOfStudy === ""){
         flag = true;
     }
     if(flag){
@@ -39,17 +39,30 @@ function checkUserFiedl(){
         document.getElementById("userFieldOfStudyError").style.display = "none";
     }
 }
-// xxxxxxxxxx User Field of Study Validation xxxxxxxxxx
+// xxxxxxxxxx User Years of Study Validation xxxxxxxxxx
 function checkUserYears(){
     var userYearsOfRe = document.getElementById("userYearsOfRe").value;
     var flag = false;
-    if(userSurname === ""){
+    if(userYearsOfRe === ""){
         flag = true;
     }
     if(flag){
         document.getElementById("userYearsOfReError").style.display = "block";
     }else{
         document.getElementById("userYearsOfReError").style.display = "none";
+    }
+}
+// xxxxxxxxxx User Years of Study Validation xxxxxxxxxx
+function checkUserAffiliation(){
+    var userAffiliation = document.getElementById("userAffiliation").value;
+    var flag = false;
+    if(userAffiliation === ""){
+        flag = true;
+    }
+    if(flag){
+        document.getElementById("userAffiliationError").style.display = "block";
+    }else{
+        document.getElementById("userAffiliationError").style.display = "none";
     }
 }
 // xxxxxxxxxx Email Validation xxxxxxxxxx
@@ -100,6 +113,7 @@ function signUp(){
     var userSurname = document.getElementById("userSurname").value;
     var userFieldOfStudy = document.getElementById("userFieldOfStudy").value;
     var userYearsOfRe = document.getElementById("userYearsOfRe").value;
+    var userAffiliation = document.getElementById("userAffiliation").value;
     var userEmail = document.getElementById("userEmail").value;
     var userPassword = document.getElementById("userPassword").value;
     var userFullNameFormate = /^([A-Za-z.\s_-])/;
@@ -131,6 +145,7 @@ function signUp(){
                 userSurname: userSurname,
                 userFieldOfStudy: userFieldOfStudy,
                 userYearsOfRe: userYearsOfRe,
+                userAffiliation: userAffiliation,
                 userEmail: userEmail,
                 userPassword: userPassword,
                 userFb: "https://www.facebook.com/",
@@ -244,6 +259,7 @@ firebase.auth().onAuthStateChanged((user)=>{
             // userPassword = dataSnapShot.val().userPassword;
             document.getElementById("userFieldOfStudy").innerHTML = dataSnapShot.val().userFieldOfStudy;
             document.getElementById("userYearsOfRe").innerHTML = dataSnapShot.val().userYearsOfRe;
+            document.getElementById("userAffiliation").innerHTML = dataSnapShot.val().userAffiliation;
             document.getElementById("userFb").innerHTML = dataSnapShot.val().userFb;
             document.getElementById("userTw").innerHTML = dataSnapShot.val().userTw;
             document.getElementById("userGp").innerHTML = dataSnapShot.val().userGp;
@@ -261,6 +277,7 @@ function showEditProfileForm(){
     var userSurname = document.getElementById("userSurname").innerHTML;
     var userFieldOfStudy = document.getElementById("userFieldOfStudy").innerHTML;
     var userYearsOfRe = document.getElementById("userYearsOfRe").innerHTML;
+    var userAffiliation = document.getElementById("userAffiliation").innerHTML;
     var userFb = document.getElementById("userFb").getAttribute("href");
     var userTw = document.getElementById("userTw").getAttribute("href");
     var userGp = document.getElementById("userGp").getAttribute("href");
@@ -269,6 +286,7 @@ function showEditProfileForm(){
     document.getElementById("userSurname").value = userSurname;
     document.getElementById("userFieldOfStudy").value = userFieldOfStudy;
     document.getElementById("userYearsOfRe").value = userYearsOfRe;
+    document.getElementById("userAffiliation").value = userAffiliation;
     document.getElementById("userFacebook").value = userFb;
     document.getElementById("userTwitter").value = userTw;
     document.getElementById("userGooglePlus").value = userGp;
@@ -285,6 +303,7 @@ function saveProfile(){
     let userSurname = document.getElementById("userSurname").value
     let userFieldOfStudy = document.getElementById("userFieldOfStudy").value
     let userYearsOfRe = document.getElementById("userYearsOfRe").value
+    let userAffiliation = document.getElementById("userAffiliation").value
     let userFacebook = document.getElementById("userFacebook").value
     let userTwitter = document.getElementById("userTwitter").value
     let userGooglePlus = document.getElementById("userGooglePlus").value
@@ -306,7 +325,8 @@ function saveProfile(){
             userFullName: userFullName,
             userSurname: userSurname,
             userFieldOfStudy: userFieldOfStudy,
-            userYearsOfRe: userYearsOfRe, 
+            userYearsOfRe: userYearsOfRe,
+            userAffiliation: userAffiliation, 
             userFb: userFacebook,
             userTw: userTwitter,
             userGp: userGooglePlus,
