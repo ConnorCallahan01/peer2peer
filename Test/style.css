@@ -1,8 +1,18 @@
 .container {
-	width: 400px;
+	width: auto;
+	padding-right: 100px;
 	border-right: 1px solid black;
 	font-size: 15px;
 	font-family: arial;
+	float: left;
+}
+.news-section {
+	width: auto;
+	padding-left: 100px;
+	border-right: 1px solid black;
+	font-size: 15px;
+	font-family: arial;
+	float: right;
 }
 
 .comment {
@@ -22,23 +32,34 @@
 	color: gray;
 }
 
+.feed-headers {
+	font-size: 30px;
+}
 .specialist-name {
 	font-weight: bold;
 }
+.specialist-topic {
+	font-weight: bold;
+}
+.message-text {
+	font-weight: bold;
+}
+
 
 .delete-icon {
-	height: 12px;
+	height: 30px;
+	float:right;
 }
 
 .new-comment-section p {
-	margin-bottom: 5px;
+	margin-bottom: 5px ;
 	font-weight: bold;
 	color: teal;
 }
 
 .name,
-.message {
-	border: 1px solid teal;
+.message,.topic {
+	border: 1px solid black;
 	border-radius: 5px;
 	font-size: 13px;
 	padding: 7px;
