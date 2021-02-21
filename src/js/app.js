@@ -151,7 +151,7 @@ function signUp(){
             if (user != null) {
                 uid = user.uid;
             }
-            var firebaseRef = firebase.database().ref();
+            var firebaseRef = firebase.database().ref("users");
 
             var userData = {
                 userFullName: userFullName,

@@ -68,7 +68,6 @@ $(document).ready(function () {
         var today = month + " " + dd + ", " + yyyy;
 
         var user = firebase.auth().currentUser;
-
         database.ref().push({
             Name: nameEntry,
             Date: today,
@@ -94,3 +93,26 @@ $(document).ready(function () {
 
 
 });
+
+var firebaseConfig = {
+  apiKey: "AIzaSyA_YQT_5NeIamIsf9pO9caKYX2n9ROve70",
+  authDomain: "peer2p-d953f.firebaseapp.com",
+  projectId: "peer2p-d953f",
+  storageBucket: "peer2p-d953f.appspot.com",
+  messagingSenderId: "540439183924",
+  databaseURL:"https://peer2p-d953f-default-rtdb.firebaseio.com",
+  appId: "1:540439183924:web:a31313c5596d9756460061",
+  measurementId: "G-CJ1YBF2SF1"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+
+
+
+var database = firebase.database().ref("users");
+
+function myName() {
+
+  alert("nice cock",database.childs("users").child(userID).get().then);
+}
