@@ -73,7 +73,11 @@
 	border: 1px solid black;
 	border-radius: 5px;
 }
-
+.menu{
+	width:auto;
+	height: 10%;
+	background-color: blue;
+}
 .name,
 .message,.topic {
 	border: 1px solid black;
@@ -81,4 +85,23 @@
 	font-size: 13px;
 	padding: 7px;
 	width: 350px;
+}
+b {
+  background-color: #2596be;
+  color: white;
+  padding: 0.4% 0.9%;
+  position: absolute;
+  top:10px;
+  left:10px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+b:hover {
+  background-color: #adcdff;
+}
+
+b:active {
+  background-color: lightgray;
+
 }

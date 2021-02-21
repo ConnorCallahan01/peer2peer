@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="fileUploadStyle.css">
+        <!--<script src="fileUpload.js"></script>-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-storage.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-firestore.js"></script>
+        <title>File Upload</title>
+
+
+        <meta charset="utf-8"/>
+        <meta name="author" content="Danny Bowers"/>
+    </head>
+    <body>
+      <b id = "goToFeed" onclick="window.location.href='feed2.html'">Return</b>
+        <br><br><br><br><br>
+        <img id="me" class="center" src="graphic.png" alt="graphic">
+        <header>
+        </header>
+
+        <div id="exp">
+          <input type="file" id="files" multiple />
+          <label for="review">Abstract:</label>
+          <input type="text" id="abstract" name="abstract"></input><br><br>
+
+          <label for="review">How Many Reviewers do you need?:</label>
+          <input type="text" id="review" name="review"><br><br>
+
+          <button id="send">Upload</button>
+          <p id="uploading"></p>
+          <progress value="0" max="100" id="progress"></progress>
+
+</div>
+        <br><br>
+        <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyA_YQT_5NeIamIsf9pO9caKYX2n9ROve70",
+            authDomain: "peer2p-d953f.firebaseapp.com",
+            projectId: "peer2p-d953f",
+            storageBucket: "peer2p-d953f.appspot.com",
+            messagingSenderId: "540439183924",
+            databaseURL:"https://peer2p-d953f-default-rtdb.firebaseio.com",
+            appId: "1:540439183924:web:a31313c5596d9756460061",
+            measurementId: "G-CJ1YBF2SF1"
+          };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        </script>
+
+        <script>
+        var files = [];
+        document.getElementById("files").addEventListener("change", function(e) {
+          files = e.target.files;
+          for (let i = 0; i < files.length; i++) {
+            console.log(files[i]);
+          }
+        });
+
+        document.getElementById("send").addEventListener("click", function() {
+          //checks if files are selected
+          if (files.length != 0) {
+            //Loops through all the selected files
+            for (let i = 0; i < files.length; i++) {
+              //create a storage reference
+              var storage = firebase.storage().ref(files[i].name);
+
+              //upload file
+              var upload = storage.put(files[i]);
+
+              //update progress bar
+              upload.on(
+                "state_changed",
+                function progress(snapshot) {
+                  var percentage =
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                  document.getElementById("progress").value = percentage;
+                },
+
+                function error() {
+                  alert("error uploading file");
+                },
+
+                function complete() {
+                  document.getElementById(
+                    "uploading"
+                  ).innerHTML += `${files[i].name} uploaded <br />`;
+                }
+              );
+            }
+          } else {
+            alert("No file chosen");
+          }
+        });
+
+        function getFileUrl(filename) {
+          //create a storage reference
+          var storage = firebase.storage().ref(filename);
+
+          //get file url
+          storage
+            .getDownloadURL()
+            .then(function(url) {
+              console.log(url);
+            })
+            .catch(function(error) {
+              console.log("error encountered");
+            });
+        }
+        </script>
+
+        <script>
+           var topicEntry = $("#topic").val().trim();
+           var abstractEntry = $("#abstract").val().trim();
+           var reviewerEntry = $("#review").val().trim();
+
+
+           var d = new Date();
+           var year = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+           var dd = d.getDate();
+           var mm = d.getMonth();
+           var month = year[mm];
+           var yyyy = d.getFullYear();
+           var today = month + " " + dd + ", " + yyyy;
+
+           database.ref().push({
+               Abstract: abstractEntry,
+               Date: today,
+               Review: reviewerEntry,
+               Topic: topicEntry,
+           });
+
+           $("#topic").val("");
+           $("#abstract").val("");
+           $("#review").val("");
+
+    </script>
+
+        <footer></footer>
+    </body>
+</html>

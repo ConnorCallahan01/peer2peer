@@ -27,7 +27,7 @@ function checkUserSurname(){
     }
 }
 // xxxxxxxxxx User Field of Study Validation xxxxxxxxxx
-function checkUserFiedl(){
+function checkUserField(){
     var userFieldOfStudy = document.getElementById("userFieldOfStudy").value;
     var flag = false;
     if(userFieldOfStudy === ""){
@@ -119,10 +119,16 @@ function signUp(){
     var userFullNameFormate = /^([A-Za-z.\s_-])/;
     var userEmailFormate = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     var userPasswordFormate = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,}/;
+    var userFieldOfStudyFormate = /^([A-Za-z.\s_-])/;
+    var userYearsOfReFormate = /^([A-Za-z.\s_-])/;
+    var userAffiliationFormate = /^([A-Za-z.\s_-])/;
 
     var checkUserFullNameValid = userFullName.match(userFullNameFormate);
     var checkUserEmailValid = userEmail.match(userEmailFormate);
     var checkUserPasswordValid = userPassword.match(userPasswordFormate);
+    var checkUserFieldOfStudyValid = userFieldOfStudy.match(userFieldOfStudyFormate);
+    var checkUserYearsOfReValid = userYearsOfRe.match(userYearsOfReFormate);
+    var checkUserAffiliationValid = userAffiliation.match(userAffiliationFormate);
 
     if(checkUserFullNameValid == null){
         return checkUserFullName();
@@ -132,6 +138,12 @@ function signUp(){
         return checkUserEmail();
     }else if(checkUserPasswordValid == null){
         return checkUserPassword();
+    }else if(checkUserFieldOfStudyValid == null){
+        return checkUserFieldOfStudy();
+    }else if(checkUserYearsOfReValid == null){
+        return checkUserYears();
+    }else if(checkUserAffiliationValid == null){
+        return checkUserAffiliation();
     }else{
         firebase.auth().createUserWithEmailAndPassword(userEmail, userPassword).then((success) => {
             var user = firebase.auth().currentUser;
@@ -166,8 +178,8 @@ function signUp(){
             var errorMessage = error.message;
             swal({
                 type: 'error',
-                title: 'Error',
-                text: "Error",
+                title: 'Email Already Exists in DataBase',
+                text: "Try Signing In with Password",
             })
         });
     }
@@ -320,19 +332,19 @@ function saveProfile(){
         if(user != null){
             uid = user.uid;
         }
-        var firebaseRef = firebase.database().ref();
+        var firestoreRef = firebase.database().ref();
         var userData = {
             userFullName: userFullName,
             userSurname: userSurname,
             userFieldOfStudy: userFieldOfStudy,
             userYearsOfRe: userYearsOfRe,
-            userAffiliation: userAffiliation, 
+            userAffiliation: userAffiliation,
             userFb: userFacebook,
             userTw: userTwitter,
             userGp: userGooglePlus,
             userBio: userBio,
         }
-        firebaseRef.child(uid).set(userData);
+        firestoreRef.child(uid).set(userData);
         swal({
             type: 'successfull',
             title: 'Update successfull',
@@ -355,7 +367,7 @@ function signOut(){
             title: 'Signed Out',
         }).then((value) => {
             setTimeout(function(){
-                window.location.replace("../index.html");
+                window.location.replace("index.html");
             }, 1000)
         });
     }).catch(function(error) {
