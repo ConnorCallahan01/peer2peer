@@ -46,6 +46,12 @@ $(document).ready(function () {
 
     });
 
+    database.ref('user/login').on("child_added", function (snapshot){
+      var sv = snapshot.val();
+      console.log(snapshot.val());
+    });
+
+
 
 
 
@@ -67,10 +73,10 @@ $(document).ready(function () {
         var today = month + " " + dd + ", " + yyyy;
 
         database.ref().push({
-            Name: nameEntry,
-            Date: today,
-            Message: messageEntry,
-            Topic: topicEntry,
+          Name: nameEntry,
+          Date: today,
+          Message: messageEntry,
+          Topic: topicEntry,
         });
 
         $("#name").val("");

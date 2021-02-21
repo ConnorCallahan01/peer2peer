@@ -86,7 +86,7 @@
 	padding: 7px;
 	width: 350px;
 }
-b {
+.b {
   background-color: #2596be;
   color: white;
   padding: 0.4% 0.9%;
@@ -97,11 +97,11 @@ b {
   text-transform: uppercase;
 }
 
-b:hover {
+.b:hover {
   background-color: #adcdff;
 }
 
-b:active {
+.b:active {
   background-color: lightgray;
 
 }

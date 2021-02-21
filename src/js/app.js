@@ -151,21 +151,31 @@ function signUp(){
             if (user != null) {
                 uid = user.uid;
             }
-            var firebaseRef = firebase.database().ref();
+            var firebaseRefName = firebase.database().ref('user');
             var userData = {
                 userFullName: userFullName,
                 userSurname: userSurname,
-                userFieldOfStudy: userFieldOfStudy,
-                userYearsOfRe: userYearsOfRe,
-                userAffiliation: userAffiliation,
-                userEmail: userEmail,
-                userPassword: userPassword,
-                userFb: "https://www.facebook.com/",
-                userTw: "https://twitter.com/",
-                userGp: "https://plus.google.com/",
-                userBio: "User biography",
             }
-            firebaseRef.child(uid).set(userData);
+            var firebaseRefBack = firebase.database().ref('user/background');
+            var userBackground = {
+              userFieldOfStudy: userFieldOfStudy,
+              userYearsOfRe: userYearsOfRe,
+              userAffiliation: userAffiliation,
+            }
+            var firebaseRefLogin = firebase.database().ref('user/login');
+            var userLogin = {
+              userEmail: userEmail,
+              userPassword: userPassword,
+              userFb: "https://www.facebook.com/",
+              userTw: "https://twitter.com/",
+              userGp: "https://plus.google.com/",
+              userBio: "User biography",
+            }
+
+            firebaseRefName.child(uid).set(userData);
+            firebaseRefBack.child(uid).set(userBackground);
+            firebaseRefLogin.child(uid).set(userLogin);
+
             swal('Your Account Created','Your account was created successfully, you can log in now.',
             ).then((value) => {
                 setTimeout(function(){
