@@ -6,6 +6,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-storage.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-firestore.js"></script>
         <title>File Upload</title>
 
 
@@ -20,10 +21,17 @@
         </header>
 
         <div id="exp">
-          <input type="file" id="files" multiple /><br /><br />
+          <input type="file" id="files" multiple />
+          <label for="review">Abstract:</label>
+          <input type="text" id="abstract" name="abstract"></input><br><br>
+
+          <label for="review">How Many Reviewers do you need?:</label>
+          <input type="text" id="review" name="review"><br><br>
+
           <button id="send">Upload</button>
           <p id="uploading"></p>
           <progress value="0" max="100" id="progress"></progress>
+
 </div>
         <br><br>
         <script>
@@ -102,33 +110,33 @@
             });
         }
         </script>
+
         <script>
-      <!--//Add abstracts and reviewer count-->
+           var topicEntry = $("#topic").val().trim();
+           var abstractEntry = $("#abstract").val().trim();
+           var reviewerEntry = $("#review").val().trim();
+
+
+           var d = new Date();
+           var year = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+           var dd = d.getDate();
+           var mm = d.getMonth();
+           var month = year[mm];
+           var yyyy = d.getFullYear();
+           var today = month + " " + dd + ", " + yyyy;
+
+           database.ref().push({
+               Abstract: abstractEntry,
+               Date: today,
+               Review: reviewerEntry,
+               Topic: topicEntry,
+           });
+
+           $("#topic").val("");
+           $("#abstract").val("");
+           $("#review").val("");
+
     </script>
-        <!--<label for="abstract">Abstract:</label>
-        <ul id="list"></ul>
-
-
-        <textarea type="text" id="abstract" name="abstract" rows="5"></textarea><br><br>
-
-        <label for="review">How Many Reviewers do you need?:</label>
-        <input type="text" id="review" name="review"><br><br>
-
-        <input type="submit">
-        <form action="/action_page.php">
-
-        </div>-->
-<br>
-
-
-
-        </form>
-
-
-
-
-
-
 
         <footer></footer>
     </body>
