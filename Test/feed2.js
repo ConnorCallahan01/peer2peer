@@ -46,8 +46,8 @@ $(document).ready(function () {
 
     });
 
-      var userId = _spPageContextInfo.userId
-        document.getElementById("userName") = "userId"
+
+
 
     $("#submit").on("click", function () {
         event.preventDefault();
@@ -87,5 +87,7 @@ $(document).ready(function () {
         });
 
     });
+
+
 
 });
