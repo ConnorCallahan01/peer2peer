@@ -29,14 +29,15 @@ $(document).ready(function () {
 
 
 
-    var database = firebase.database();
+    var database = firebase.database().ref("users/Post");
 
     database.ref().on("child_added", function (snapshot) {
         var sv = snapshot.val();
         console.log(snapshot.val());
         var key = snapshot.key;
         var newEntry = '<div class="row1"><div class="specialist-name">' +
-        sv.Name + '<div class="row1"><div class="specialist-topic">' +
+        sv.Name +
+        + '<div class="row1"><div class="specialist-topic">' +
         sv.Topic + '</div><img src="delete-icon.png" class="delete-icon" id="' +
         key + '"></div><div class="row2"><div class="message-text">' +
         sv.Message + '</div></div><div class="row3"><div class="date">' +
@@ -72,6 +73,7 @@ $(document).ready(function () {
         var yyyy = d.getFullYear();
         var today = month + " " + dd + ", " + yyyy;
 
+        var user = firebase.auth().currentUser;
         database.ref().push({
           Name: nameEntry,
           Date: today,
@@ -97,3 +99,26 @@ $(document).ready(function () {
 
 
 });
+
+var firebaseConfig = {
+  apiKey: "AIzaSyA_YQT_5NeIamIsf9pO9caKYX2n9ROve70",
+  authDomain: "peer2p-d953f.firebaseapp.com",
+  projectId: "peer2p-d953f",
+  storageBucket: "peer2p-d953f.appspot.com",
+  messagingSenderId: "540439183924",
+  databaseURL:"https://peer2p-d953f-default-rtdb.firebaseio.com",
+  appId: "1:540439183924:web:a31313c5596d9756460061",
+  measurementId: "G-CJ1YBF2SF1"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+
+
+
+var database = firebase.database().ref("users");
+
+function myName() {
+
+  alert("nice cock",database.childs("users").child(userID).get().then);
+}
