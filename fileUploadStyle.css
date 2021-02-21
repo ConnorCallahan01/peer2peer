@@ -1,0 +1,93 @@
+html{
+    margin: 0;
+    padding: 20px;
+    background: white;
+    border: 10px solid LightGray;
+}
+body{
+    background-image: url("lab.jpg");
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 1100px 630px;
+    font: 90% didot, serif;
+}
+header{
+    text-align: center;
+    font-size: 30pt;
+    margin-top: 85px;
+    margin-bottom: 60px;
+}
+li{
+    margin-left: 30px;
+}
+b {
+  display: inline-block;
+    background-color: indigo;
+    color: white;
+    padding: 0.5rem;
+    font-family: sans-serif;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+a{
+  color: black;
+  font-family: serif;
+  font-size: 175%;
+}
+footer{
+    text-align: center;
+}
+.top_page{
+    text-align: center;
+    padding: 20px;
+    background: white;
+    outline: 10px solid LightGray;
+    margin: 30px 50px 50px;
+}
+.list_start{
+    font-size: 20pt;
+    padding: 3px;
+    border: 5px solid LightGray;
+}
+img.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+#to_hobbies{
+    text-align: center;
+    font-size: 14pt;
+}
+#me{
+    width:400px;
+    height:300px;
+}
+
+#intro{
+    text-align: center;
+}
+#lists{
+    margin: 30px 30px 30px 30px;
+}
+#responsive
+{
+    text-align: center;
+    font-weight: bold;
+    padding: 3px;
+    border: 5px solid LightGray;
+    margin: 30px;
+}
+#exp{
+    text-align: center;
+    padding: 3px;
+    border: 5px solid lightgray;
+    margin: 30px;
+}
+#Resume p,
+#responsive p {
+    font-size: 14pt;
+    margin: 0px 0px 10px 0px;
+}
