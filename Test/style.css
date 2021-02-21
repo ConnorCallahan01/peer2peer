@@ -1,0 +1,46 @@
+.container {
+	width: 400px;
+	border-right: 1px solid black;
+	font-size: 15px;
+	font-family: arial;
+}
+
+.comment {
+	border-bottom: 1px solid black;
+	padding: 10px;
+	line-height: 1.2;
+}
+
+.row1 {
+	display: flex;
+	justify-content: space-between;
+}
+
+.row3 {
+	text-align: right;
+	font-size: 13px;
+	color: gray;
+}
+
+.specialist-name {
+	font-weight: bold;
+}
+
+.delete-icon {
+	height: 12px;
+}
+
+.new-comment-section p {
+	margin-bottom: 5px;
+	font-weight: bold;
+	color: teal;
+}
+
+.name,
+.message {
+	border: 1px solid teal;
+	border-radius: 5px;
+	font-size: 13px;
+	padding: 7px;
+	width: 350px;
+}
