@@ -1,16 +1,10 @@
 {
   "hosting": {
-    "public": "pages",
+    "public": "src",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/sign-up.html"
-      }
     ]
   }
 }

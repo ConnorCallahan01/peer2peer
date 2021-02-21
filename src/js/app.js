@@ -1,5 +1,6 @@
 // xxxxxxxxxx Working For Sign Up Form xxxxxxxxxx
 // xxxxxxxxxx Full Name Validation xxxxxxxxxx
+
 function checkUserFullName(){
     var userSurname = document.getElementById("userFullName").value;
     var flag = false;
@@ -180,7 +181,7 @@ function signIn(){
                 title: 'Succesfully signed in',
             }).then((value) => {
                 setTimeout(function(){
-                    window.location.replace("./pages/profile.html");
+                    window.location.replace("./profile.html");
                 }, 1000)
             });
         }).catch((error) => {
@@ -207,14 +208,14 @@ firebase.auth().onAuthStateChanged((user)=>{
         }
         let firebaseRefKey = firebase.database().ref().child(uid);
         firebaseRefKey.on('value', (dataSnapShot)=>{
-            document.getElementById("userPfFullName").innerHTML = dataSnapShot.val().userFullName;
-            document.getElementById("userPfSurname").innerHTML = dataSnapShot.val().userSurname;
+            document.getElementById("userFullName").innerHTML = dataSnapShot.val().userFullName;
+            document.getElementById("userSurname").innerHTML = dataSnapShot.val().userSurname;
             // userEmail = dataSnapShot.val().userEmail;
             // userPassword = dataSnapShot.val().userPassword;
-            document.getElementById("userPfFb").setAttribute('href', dataSnapShot.val().userFb);
-            document.getElementById("userPfTw").setAttribute('href', dataSnapShot.val().userTw);
-            document.getElementById("userPfGp").setAttribute('href', dataSnapShot.val().userGp);
-            document.getElementById("userPfBio").innerHTML = dataSnapShot.val().userBio;
+            document.getElementById("userFb").innerHTML = dataSnapShot.val().userFb;
+            document.getElementById("userTw").innerHTML = dataSnapShot.val().userTw;
+            document.getElementById("userGp").innerHTML = dataSnapShot.val().userGp;
+            document.getElementById("userBio").innerHTML = dataSnapShot.val().userBio;
         })
     } else {
     //   No user is signed in.
@@ -224,18 +225,18 @@ firebase.auth().onAuthStateChanged((user)=>{
 function showEditProfileForm(){
     document.getElementById("profileSection").style.display = "none"
     document.getElementById("editProfileForm").style.display = "block"
-    var userPfFullName = document.getElementById("userPfFullName").innerHTML;
-    var userPfSurname = document.getElementById("userPfSurname").innerHTML;
-    var userPfFb = document.getElementById("userPfFb").getAttribute("href");
-    var userPfTw = document.getElementById("userPfTw").getAttribute("href");
-    var userPfGp = document.getElementById("userPfGp").getAttribute("href");
-    var userPfBio = document.getElementById("userPfBio").innerHTML;
-    document.getElementById("userFullName").value = userPfFullName;
-    document.getElementById("userSurname").value = userPfSurname;
-    document.getElementById("userFacebook").value = userPfFb;
-    document.getElementById("userTwitter").value = userPfTw;
-    document.getElementById("userGooglePlus").value = userPfGp;
-    document.getElementById("userBio").value = userPfBio;
+    var userFullName = document.getElementById("userFullName").innerHTML;
+    var userSurname = document.getElementById("userSurname").innerHTML;
+    var userFb = document.getElementById("userFb").getAttribute("href");
+    var userTw = document.getElementById("userTw").getAttribute("href");
+    var userGp = document.getElementById("userGp").getAttribute("href");
+    var userBio = document.getElementById("userBio").innerHTML;
+    document.getElementById("userFullName").value = userFullName;
+    document.getElementById("userSurname").value = userSurname;
+    document.getElementById("userFacebook").value = userFb;
+    document.getElementById("userTwitter").value = userTw;
+    document.getElementById("userGooglePlus").value = userGp;
+    document.getElementById("userBio").value = userBio;
 }
 // xxxxxxxxxx Hide edit profile form xxxxxxxxxx
 function hideEditProfileForm(){
