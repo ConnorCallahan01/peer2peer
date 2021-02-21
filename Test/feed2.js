@@ -25,7 +25,7 @@ $(document).ready(function () {
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-    
+
 
 
 
@@ -35,11 +35,19 @@ $(document).ready(function () {
         var sv = snapshot.val();
         console.log(snapshot.val());
         var key = snapshot.key;
-        var newEntry = '<div class="row1"><div class="specialist-name">' + sv.Name + '<div class="row1"><div class="specialist-topic">' + sv.Topic + '</div><img src="delete-icon.png" class="delete-icon" id="' + key + '"></div><div class="row2"><div class="message-text">' + sv.Message + '</div></div><div class="row3"><div class="date">' + sv.Date + '</div></div>';
+        var newEntry = '<div class="row1"><div class="specialist-name">' +
+        sv.Name + '<div class="row1"><div class="specialist-topic">' +
+        sv.Topic + '</div><img src="delete-icon.png" class="delete-icon" id="' +
+        key + '"></div><div class="row2"><div class="message-text">' +
+        sv.Message + '</div></div><div class="row3"><div class="date">' +
+        sv.Date + '</div></div>';
         newDiv = document.createElement('div');
         $(newDiv).addClass("comment").html(newEntry).prependTo($(".news-feed"));
 
     });
+
+      var userId = _spPageContextInfo.userId
+        document.getElementById("userName") = "userId"
 
     $("#submit").on("click", function () {
         event.preventDefault();
